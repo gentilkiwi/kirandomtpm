@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="kirandomtpmprov.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="kirandomtpmprov.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="lib">
+      <UniqueIdentifier>{375d9d99-98a0-41e1-9951-93fd06a153e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\win32">
+      <UniqueIdentifier>{37fff0bc-7869-4b54-9534-c510c86a8ba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\x64">
+      <UniqueIdentifier>{ca73f260-21af-4eb9-acdf-e160d16f4789}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\x64\ntdll.lib">
+      <Filter>lib\x64</Filter>
+    </Library>
+    <Library Include="lib\win32\ntdll.lib">
+      <Filter>lib\win32</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
