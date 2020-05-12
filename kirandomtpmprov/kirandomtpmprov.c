@@ -1,3 +1,8 @@
+/*	Benjamin DELPY `gentilkiwi`
+	http://blog.gentilkiwi.com
+	benjamin@gentilkiwi.com
+	Licence : https://creativecommons.org/licenses/by/4.0/
+*/
 #include "kirandomtpmprov.h"
 
 __checkReturn NTSTATUS WINAPI KiwiBCryptOpenAlgorithmProvider(__out BCRYPT_ALG_HANDLE *phAlgorithm, __in LPCWSTR pszAlgId, __in ULONG dwFlags)
