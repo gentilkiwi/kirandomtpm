@@ -44,7 +44,7 @@ Retrieving 20 random bytes from `Kiwi Random TPM Provider` provider:
 aa8df125e44cdc90c3460fa0a7882631f20557db
 ```
 
-Note: if you did not register the provider, you can see the section 'Generate random bytes without registering the provider' below.
+Note: if you did not register the provider, you can see the section ['Generate random bytes without registering the provider'](#generate-random-bytes-without-registering-the-provider) below.
 
 #### Your own code
 
@@ -72,7 +72,7 @@ C:\security\kirandomtpm\x64>del %systemroot%\syswow64\kirandomtpmprov.dll
 
 ### Generate random bytes without registering the provider
 
-In some cases, you don't want (or can't) install the provider. No admin rights/ Only want to test the function. You can use the argument `noreg` just after the amount of bytes you want to generate on the command line.
+In some cases, you don't want (or can't) install the provider. No admin rights/only want to test the function. You can use the argument `noreg` just after the amount of bytes you want to generate on the command line.
 
 ```
 C:\security\kirandomtpm\x64>tpm_getrandom 20 noreg
