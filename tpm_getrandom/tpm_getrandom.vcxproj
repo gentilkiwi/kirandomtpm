@@ -19,11 +19,10 @@
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
-    <PlatformToolset Condition="'$(VCTargetsPath11)' != ''">v110_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VCTargetsPath12)' != ''">v120_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VCTargetsPath14)' != ''">v140_xp</PlatformToolset>
-    <PlatformToolset Condition="'$(VCTargetsPath15)' != ''">v141_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset Condition="'$(VCTargetsPath12)' != ''">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VCTargetsPath14)' != ''">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VCTargetsPath15)' != ''">v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>static</UseOfMfc>
