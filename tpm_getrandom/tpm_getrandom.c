@@ -12,19 +12,30 @@ int wmain(int argc, wchar_t * argv[])
 	if(argc > 1)
 	{
 		if(!_wcsicmp(argv[1], L"install"))
+		{
 			RegisterRngProvider();
+		}
 		else if(!_wcsicmp(argv[1], L"remove"))
+		{
 			UnregisterRngProvider();
+		}
 		else if(!_wcsicmp(argv[1], L"list"))
+		{
 			ListRngProviders();
+		}
 		else
 		{
 			cbBytesWanted = wcstoul(argv[1], NULL, 0);
 			if(cbBytesWanted)
 			{
 				if(argc > 2)
+				{
 					GetRandomFromLib(cbBytesWanted);
-				else GetRandom(cbBytesWanted);
+				}
+				else
+				{
+					GetRandom(cbBytesWanted);
+				}
 			}
 			else PRINT_ERROR(L"Invalid size (%s)\n", argv[1]);
 		}
@@ -48,7 +59,9 @@ NTSTATUS RegisterRngProvider()
 	{
 		status = BCryptAddContextFunctionProvider(CRYPT_LOCAL, NULL, BCRYPT_RNG_INTERFACE, BCRYPT_RNG_ALGORITHM, KIRANDOMTPM_PROV_NAME, CRYPT_PRIORITY_BOTTOM);
 		if(status == ERROR_SUCCESS)
+		{
 			kprintf(L"OK\n");
+		}
 		else PRINT_ERROR(L"BCryptAddContextFunctionProvider: 0x%08x\n", status);
 	}
 	else PRINT_ERROR(L"BCryptRegisterProvider: 0x%08x\n", status);
@@ -66,7 +79,9 @@ NTSTATUS UnregisterRngProvider()
 	{
 		status = BCryptUnregisterProvider(KIRANDOMTPM_PROV_NAME);
 		if(status == ERROR_SUCCESS)
+		{
 			kprintf(L"OK\n");
+		}
 		else PRINT_ERROR(L"BCryptUnregisterProvider: 0x%08x\n", status);
 	}
 	else PRINT_ERROR(L"BCryptRemoveContextFunctionProvider: 0x%08x\n", status);
@@ -91,7 +106,9 @@ NTSTATUS ListRngProviders()
 			if(status == ERROR_SUCCESS)
 			{
 				for(i = 0; i < pProviderRefs->cProviders; i++)
+				{
 					kprintf(L" | %s\n", pProviderRefs->rgpProviders[i]->pszProvider);
+				}
 			}
 			else PRINT_ERROR(L"BCryptResolveProviders(data): 0x%08x\n", status);
 			LocalFree(pProviderRefs);
@@ -118,13 +135,17 @@ NTSTATUS GetRandom(DWORD cbBytesWanted)
 		{
 			status = BCryptGenRandom(hAlgorithm, pBuffer, cbBytesWanted, 0);
 			if(status == ERROR_SUCCESS)
+			{
 				PrintResult(pBuffer, cbBytesWanted);
+			}
 			else PRINT_ERROR(L"BCryptGenRandom: 0x%08x\n", status);
 			LocalFree(pBuffer);
 		}
 		status = BCryptCloseAlgorithmProvider(hAlgorithm, 0);
 		if(status != ERROR_SUCCESS)
+		{
 			PRINT_ERROR(L"BCryptCloseAlgorithmProvider: 0x%08x\n", status);
+		}
 	}
 	else PRINT_ERROR(L"BCryptOpenAlgorithmProvider: 0x%08x\n", status);
 
@@ -150,13 +171,18 @@ NTSTATUS GetRandomFromLib(DWORD cbBytesWanted)
 			{
 				status = pFunctionTable->GenRandom(hAlgorithm, pBuffer, cbBytesWanted, 0);
 				if(status == ERROR_SUCCESS)
+				{
 					PrintResult(pBuffer, cbBytesWanted);
+				}
 				else PRINT_ERROR(L"GenRandom: 0x%08x\n", status);
 				LocalFree(pBuffer);
 			}
+			
 			status = pFunctionTable->CloseAlgorithmProvider(hAlgorithm, 0);
 			if(status != ERROR_SUCCESS)
+			{
 				PRINT_ERROR(L"CloseAlgorithmProvider: 0x%08x\n", status);
+			}
 		}
 		else PRINT_ERROR(L"OpenAlgorithmProvider: 0x%08x\n", status);
 	}
@@ -168,9 +194,12 @@ NTSTATUS GetRandomFromLib(DWORD cbBytesWanted)
 void PrintResult(LPCBYTE buffer, DWORD size)
 {
 	DWORD i;
+
 	kprintf(L"\n\n");
 	for(i = 0; i < size; i++)
+	{
 		kprintf(L"%02x", buffer[i]);
+	}
 	kprintf(L"\n");
 }
 

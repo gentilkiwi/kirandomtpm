@@ -40,7 +40,9 @@ __checkReturn NTSTATUS WINAPI KiwiBCryptOpenAlgorithmProvider(__out BCRYPT_ALG_H
 			}
 
 			if(status != TBS_SUCCESS)
+			{
 				LocalFree(pProvider);
+			}
 		}
 		else status = NTE_NO_MEMORY;
 	}
